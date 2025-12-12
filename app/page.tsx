@@ -86,9 +86,6 @@ export default function Home() {
               >
                 See my bank matches
               </a>
-              <button className="border border-slate-700 hover:border-slate-600 text-slate-50 px-6 py-3 rounded-lg font-semibold transition">
-                Talk to a funding specialist
-              </button>
             </div>
             <p className="text-sm text-slate-400">No hard credit pull. Takes under 3 minutes.</p>
             <div className="flex flex-wrap gap-6 text-sm text-slate-300">
