@@ -87,7 +87,12 @@ export default function Home() {
                 See my bank matches
               </a>
             </div>
-            <p className="text-sm text-slate-400">No hard credit pull. Takes under 3 minutes.</p>
+            {/* Trust Scaffolding */}
+            <div className="space-y-2 pt-2 border-t border-slate-800">
+              <p className="text-xs text-slate-400">Bank-level encryption • Read-only connections • Never sell your data</p>
+              <p className="text-xs text-slate-400">Soft eligibility check (no hard pull)</p>
+              <p className="text-xs text-slate-400">Built by ex-bankers • Designed for community & regional banks</p>
+            </div>
             <div className="flex flex-wrap gap-6 text-sm text-slate-300">
               <div className="flex items-center gap-2">
                 <span className="text-emerald-400">✓</span>
@@ -213,7 +218,7 @@ export default function Home() {
               href="#cta-form"
               className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition"
             >
-              Check my funding odds
+              See my bank matches
             </a>
           </div>
         </div>
@@ -256,7 +261,7 @@ export default function Home() {
               href="#cta-form"
               className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition"
             >
-              Get started – it's free
+              See my bank matches
             </a>
           </div>
         </div>
@@ -314,7 +319,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof Section */}
+      {/* Process Proof Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
@@ -323,22 +328,59 @@ export default function Home() {
           <p className="text-xl text-slate-300 text-center max-w-3xl mx-auto mb-12">
             Our founder grew up in a family construction and masonry business, making calls to banks that kept saying no—not because the business couldn't do the work, but because it didn't fit the model. Traction exists to close that gap for every owner.
           </p>
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <TestimonialCard
-              quote="With Traction, we finally understood which banks actually wanted our business. We secured a line of credit in weeks instead of months."
-              name="Owner Name"
-              role="Construction Company, Atlanta"
-            />
-            <TestimonialCard
-              quote="The Fundability Score made it clear what we needed to improve. Three months later, our banker said we were one of the cleanest files they'd seen."
-              name="Owner Name"
-              role="Retailer, Houston"
-            />
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Metric label="Matched to a bank within 24 hours" value="X%" />
-            <Metric label="Loan volume influenced" value="$Y" />
-            <Metric label="Avg. fundability lift for Pro users" value="+Z pts" />
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-slate-900 rounded-2xl p-8 border border-slate-800">
+              <h3 className="text-2xl font-semibold mb-6 text-slate-50">What you'll get in 3 minutes</h3>
+              <ul className="space-y-4 text-slate-300">
+                <li className="flex items-start gap-3">
+                  <span className="text-emerald-400 mt-1 text-xl">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-50">Your Fundability Score</div>
+                    <div className="text-sm">See where you stand and what's holding you back</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-emerald-400 mt-1 text-xl">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-50">Likely-fit banks</div>
+                    <div className="text-sm">Matched based on your profile and their current appetite</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-emerald-400 mt-1 text-xl">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-50">Next-step checklist</div>
+                    <div className="text-sm">Clear actions to improve your approval odds</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-slate-900 rounded-2xl p-8 border border-slate-800">
+              <h3 className="text-2xl font-semibold mb-6 text-slate-50">What we never do</h3>
+              <ul className="space-y-4 text-slate-300">
+                <li className="flex items-start gap-3">
+                  <span className="text-red-400 mt-1 text-xl">×</span>
+                  <div>
+                    <div className="font-semibold text-slate-50">Hard credit pulls</div>
+                    <div className="text-sm">We use soft checks only—no impact on your credit score</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-400 mt-1 text-xl">×</span>
+                  <div>
+                    <div className="font-semibold text-slate-50">Spam or unwanted calls</div>
+                    <div className="text-sm">You choose when and who to contact</div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-red-400 mt-1 text-xl">×</span>
+                  <div>
+                    <div className="font-semibold text-slate-50">Sell your leads</div>
+                    <div className="text-sm">Your data stays private and secure</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -538,12 +580,15 @@ export default function Home() {
                   disabled={isSubmitting}
                   className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition"
                 >
-                  {isSubmitting ? "Submitting..." : "Get my bank matches"}
+                  {isSubmitting ? "Submitting..." : "See my bank matches"}
                 </button>
               </div>
             </form>
-            <p className="text-xs text-slate-400 text-center mt-4">
-              By continuing, you agree to receive occasional product updates. No spam.
+            <p className="text-xs text-slate-400 text-center mt-3">
+              Next: answer 6 questions (2 minutes) → see matches.
+            </p>
+            <p className="text-xs text-slate-400 text-center mt-2">
+              No spam. We don't sell your info. Unsubscribe anytime.
             </p>
           </div>
         </div>
