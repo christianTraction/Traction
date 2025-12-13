@@ -91,7 +91,7 @@ export default function Home() {
             <div className="space-y-2 pt-2 border-t border-slate-800">
               <p className="text-xs text-slate-400">Bank-level encryption • Read-only connections • Never sell your data</p>
               <p className="text-xs text-slate-400">Soft eligibility check (no hard pull)</p>
-              <p className="text-xs text-slate-400">Built by ex-bankers • Designed for community & regional banks</p>
+              <p className="text-xs text-slate-400">Ex-bankers from 3 major banks • Launched via Harvard iLab</p>
             </div>
             <div className="flex flex-wrap gap-6 text-sm text-slate-300">
               <div className="flex items-center gap-2">
