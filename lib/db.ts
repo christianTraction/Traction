@@ -25,14 +25,33 @@ export async function initDatabase() {
     await pool.query('SELECT NOW()');
     console.log('Database connection successful');
     
+    // Create table with new schema
     await pool.query(`
       CREATE TABLE IF NOT EXISTS leads (
         id SERIAL PRIMARY KEY,
         email VARCHAR(255) NOT NULL,
         goal TEXT,
+        funding_type VARCHAR(255),
+        funding_amount VARCHAR(255),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
+    
+    // Add new columns if they don't exist (for existing tables)
+    await pool.query(`
+      DO $$ 
+      BEGIN
+        IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                       WHERE table_name='leads' AND column_name='funding_type') THEN
+          ALTER TABLE leads ADD COLUMN funding_type VARCHAR(255);
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                       WHERE table_name='leads' AND column_name='funding_amount') THEN
+          ALTER TABLE leads ADD COLUMN funding_amount VARCHAR(255);
+        END IF;
+      END $$;
+    `);
+    
     console.log('Database table initialized');
   } catch (error: any) {
     console.error('Error initializing database:', error);
@@ -43,11 +62,16 @@ export async function initDatabase() {
 }
 
 // Save a lead to the database
-export async function saveLead(email: string, goal: string) {
+export async function saveLead(
+  email: string, 
+  goal: string, 
+  fundingType?: string, 
+  fundingAmount?: string
+) {
   try {
     const result = await pool.query(
-      'INSERT INTO leads (email, goal) VALUES ($1, $2) RETURNING *',
-      [email, goal]
+      'INSERT INTO leads (email, goal, funding_type, funding_amount) VALUES ($1, $2, $3, $4) RETURNING *',
+      [email, goal || null, fundingType || null, fundingAmount || null]
     );
     return result.rows[0];
   } catch (error) {

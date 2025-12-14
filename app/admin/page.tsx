@@ -6,6 +6,8 @@ interface Lead {
   id: number;
   email: string;
   goal: string | null;
+  funding_type: string | null;
+  funding_amount: string | null;
   created_at: string;
 }
 
@@ -176,7 +178,10 @@ export default function AdminPage() {
                       Email
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
-                      Goal / Funding Need
+                      Funding Type
+                    </th>
+                    <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
+                      Funding Amount
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
                       Submitted
@@ -196,8 +201,13 @@ export default function AdminPage() {
                         {lead.email}
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-300">
-                        {lead.goal || (
+                        {lead.funding_type || lead.goal || (
                           <span className="text-slate-500 italic">Not specified</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-slate-300">
+                        {lead.funding_amount || (
+                          <span className="text-slate-500 italic">—</span>
                         )}
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-400">

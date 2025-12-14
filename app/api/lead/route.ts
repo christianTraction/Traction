@@ -40,11 +40,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // Combine funding info for storage (or we can update DB schema later)
-    const goal = `${fundingType} - ${fundingAmount}`;
+    // Combine funding info for backward compatibility with goal field
+    const goal = fundingType && fundingAmount ? `${fundingType} - ${fundingAmount}` : '';
 
-    // Save to database
-    const lead = await saveLead(email, goal);
+    // Save to database with new fields
+    const lead = await saveLead(email, goal, fundingType, fundingAmount);
 
     console.log("New lead saved:", { 
       id: lead.id, 
