@@ -18,3 +18,33 @@ body {
   }
 }
 
+/* Whitespace Standards */
+.body-text,
+p,
+.description {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  margin-bottom: 80px;
+}
+
+h2 {
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
+.pricing-card {
+  padding: 40px;
+}
+
+.feature-list li {
+  margin-bottom: 20px;
+}
+
+.card-grid {
+  gap: 40px;
+}
+
