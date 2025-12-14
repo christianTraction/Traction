@@ -19,12 +19,16 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      const data = await response.json();
       if (response.ok) {
         alert("Thank you! We'll be in touch soon.");
         setFormData({ email: "", goal: "" });
+      } else {
+        alert(data.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      alert("Failed to submit. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);
     }
