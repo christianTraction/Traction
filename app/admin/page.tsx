@@ -46,6 +46,7 @@ export default function AdminPage() {
   const fetchLeads = async () => {
     try {
       setLoading(true);
+      setError(null);
       const response = await fetch("/api/leads");
       const data = await response.json();
       
