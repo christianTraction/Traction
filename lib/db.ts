@@ -21,6 +21,10 @@ const pool = new Pool({
 // Initialize database table
 export async function initDatabase() {
   try {
+    // Test connection first
+    await pool.query('SELECT NOW()');
+    console.log('Database connection successful');
+    
     await pool.query(`
       CREATE TABLE IF NOT EXISTS leads (
         id SERIAL PRIMARY KEY,
@@ -30,8 +34,11 @@ export async function initDatabase() {
       );
     `);
     console.log('Database table initialized');
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error initializing database:', error);
+    console.error('Error code:', error?.code);
+    console.error('Error message:', error?.message);
+    throw error; // Re-throw so the API can handle it
   }
 }
 
