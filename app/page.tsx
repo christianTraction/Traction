@@ -7,7 +7,11 @@ import FAQItem from "@/components/FAQItem";
 import Metric from "@/components/Metric";
 
 export default function Home() {
-  const [formData, setFormData] = useState({ email: "", goal: "" });
+  const [formData, setFormData] = useState({ 
+    email: "", 
+    fundingType: "", 
+    fundingAmount: "" 
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,7 +26,8 @@ export default function Home() {
       const data = await response.json();
       if (response.ok) {
         alert("Thank you! We'll be in touch soon.");
-        setFormData({ email: "", goal: "" });
+        setFormData({ email: "", fundingType: "", fundingAmount: "" });
+        // TODO: Transition to Step 2
       } else {
         alert(data.message || "Something went wrong. Please try again.");
       }
@@ -539,19 +544,20 @@ export default function Home() {
       </section>
 
       {/* Closing CTA + Form Section */}
-      <section id="cta-form" className="py-20">
+      <section id="cta-form" className="py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-900 rounded-2xl p-8 md:p-12 border border-slate-800">
+          <div className="bg-slate-900 rounded-2xl p-6 sm:p-8 md:p-12 border border-slate-800">
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">
               We help small business owners get approved—unlocking growth for the people who move our economy forward.
             </h2>
             <p className="text-xl text-slate-300 text-center mb-12 max-w-2xl mx-auto">
               If you're planning to hire, buy equipment, or smooth out your cash flow, the right bank relationship changes everything. Start by understanding where you stand and which banks are most likely to say yes.
             </p>
-            <form onSubmit={handleSubmit} className="grid md:grid-cols-3 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto">
+              {/* Email Field */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-                  Email
+                  Email Address
                 </label>
                 <input
                   type="email"
@@ -560,40 +566,74 @@ export default function Home() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="you@business.com"
+                  placeholder="you@company.com"
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 />
+                <p className="text-xs text-slate-400 mt-1">
+                  We never sell your email or spam you.
+                </p>
               </div>
+
+              {/* Funding Type Field */}
               <div>
-                <label htmlFor="goal" className="block text-sm font-medium text-slate-300 mb-2">
-                  What are you trying to fund?
+                <label htmlFor="fundingType" className="block text-sm font-medium text-slate-300 mb-2">
+                  What are you looking to fund?
                 </label>
-                <input
-                  type="text"
-                  id="goal"
-                  name="goal"
-                  value={formData.goal}
-                  onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
-                  placeholder="Working capital, equipment, etc."
-                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                />
+                <select
+                  id="fundingType"
+                  name="fundingType"
+                  required
+                  value={formData.fundingType}
+                  onChange={(e) => setFormData({ ...formData, fundingType: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                >
+                  <option value="">Select an option</option>
+                  <option value="Working capital">Working capital</option>
+                  <option value="Equipment purchase">Equipment purchase</option>
+                  <option value="Expansion / new hire">Expansion / new hire</option>
+                  <option value="Refinancing existing debt">Refinancing existing debt</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
-              <div className="flex flex-col justify-end">
+
+              {/* Funding Amount Field */}
+              <div>
+                <label htmlFor="fundingAmount" className="block text-sm font-medium text-slate-300 mb-2">
+                  How much funding do you need?
+                </label>
+                <select
+                  id="fundingAmount"
+                  name="fundingAmount"
+                  required
+                  value={formData.fundingAmount}
+                  onChange={(e) => setFormData({ ...formData, fundingAmount: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                >
+                  <option value="">Select an option</option>
+                  <option value="$10k–$50k">$10k–$50k</option>
+                  <option value="$50k–$100k">$50k–$100k</option>
+                  <option value="$100k–$250k">$100k–$250k</option>
+                  <option value="$250k–$500k">$250k–$500k</option>
+                  <option value="$500k+">$500k+</option>
+                </select>
+              </div>
+
+              {/* Primary CTA Button */}
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition"
+                  className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold text-lg transition shadow-lg shadow-emerald-500/20"
                 >
                   {isSubmitting ? "Submitting..." : "See my bank matches"}
                 </button>
+                
+                {/* Micro-Trust Copy */}
+                <p className="text-xs text-slate-400 text-center mt-3">
+                  No hard credit pull. Read-only connections. We never sell your data.
+                </p>
               </div>
             </form>
-            <p className="text-xs text-slate-400 text-center mt-3">
-              Next: answer 6 questions (2 minutes) → see matches.
-            </p>
-            <p className="text-xs text-slate-400 text-center mt-2">
-              No spam. We don't sell your info. Unsubscribe anytime.
-            </p>
           </div>
         </div>
       </section>
