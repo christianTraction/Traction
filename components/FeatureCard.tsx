@@ -14,7 +14,7 @@ export default function FeatureCard({ icon, title, shortDescription, fullDescrip
 
   return (
     <div className="bg-slate-900 rounded-2xl p-6 border border-slate-800 relative">
-      <div className="text-6xl mb-4 text-center">{icon}</div>
+      {icon && <div className="text-6xl mb-4 text-center">{icon}</div>}
       <h3 className="text-xl font-bold text-slate-50 mb-3 text-center">{title}</h3>
       <p className="text-sm text-slate-300 text-center mb-3">{shortDescription}</p>
       <div className="flex items-center justify-center gap-2">

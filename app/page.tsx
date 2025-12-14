@@ -79,6 +79,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column: Text Content */}
           <div className="space-y-6">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-balance">
               Know which banks will say yes—before you apply
@@ -99,49 +100,66 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="lg:w-[60%] lg:ml-auto">
-            <div className="bg-slate-900 rounded-2xl p-8 border border-slate-800">
-              <div className="text-sm text-slate-400 mb-2">Fundability Score</div>
-              <div className="text-6xl font-bold text-emerald-400 mb-3">82</div>
-              <div className="text-xl text-slate-200 mb-6">Strong — 3 banks actively lending</div>
-              <div className="bg-slate-800 rounded-lg p-4 text-base text-slate-300 mb-6">
-                Best funding window – Next 30–60 days
+          {/* Right Column: Photo with Fundability Score Overlay */}
+          <div className="relative">
+            {/* Hero Photo */}
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="/images/hero-business-owner.jpg"
+                alt="Small business owner working confidently in their business"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Fundability Score - Overlaid at Bottom */}
+            <div className="absolute bottom-4 left-4 right-4 lg:bottom-6 lg:left-6 lg:right-6">
+              <div className="bg-slate-900/95 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-slate-700 shadow-2xl">
+                <div className="text-sm text-slate-400 mb-2">Fundability Score</div>
+                <div className="text-5xl lg:text-6xl font-bold text-emerald-400 mb-3">82</div>
+                <div className="text-lg lg:text-xl text-slate-200 mb-4">Strong — 3 banks actively lending</div>
+                <div className="bg-slate-800/80 rounded-lg p-3 lg:p-4 text-sm lg:text-base text-slate-300">
+                  Best funding window – Next 30–60 days
+                </div>
               </div>
             </div>
-            <div className="space-y-3 mt-4">
-              <div className="bg-slate-900 rounded-xl p-5 border border-slate-800">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <div className="font-semibold text-slate-50 text-lg">Community Bank North</div>
-                    <div className="text-sm text-slate-400">Line of credit • Est. rate 6.5%</div>
-                  </div>
-                  <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded">High</span>
+          </div>
+        </div>
+
+        {/* Bank Match Cards - Moved Below Hero */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="space-y-3">
+            <div className="bg-slate-900 rounded-xl p-5 border border-slate-800 hover:border-slate-700 transition">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <div className="font-semibold text-slate-50 text-lg">Community Bank North</div>
+                  <div className="text-sm text-slate-400">Line of credit • Est. rate 6.5%</div>
                 </div>
-                <div className="text-xs text-slate-500 mb-2">Approval likelihood: High</div>
-                <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+                <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded">High</span>
               </div>
-              <div className="bg-slate-900 rounded-xl p-5 border border-slate-800">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <div className="font-semibold text-slate-50 text-lg">Metro Regional Bank</div>
-                    <div className="text-sm text-slate-400">Line of credit • Est. rate 7.2%</div>
-                  </div>
-                  <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
+              <div className="text-xs text-slate-500 mb-2">Approval likelihood: High</div>
+              <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+            </div>
+            <div className="bg-slate-900 rounded-xl p-5 border border-slate-800 hover:border-slate-700 transition">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <div className="font-semibold text-slate-50 text-lg">Metro Regional Bank</div>
+                  <div className="text-sm text-slate-400">Line of credit • Est. rate 7.2%</div>
                 </div>
-                <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
-                <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+                <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
               </div>
-              <div className="bg-slate-900 rounded-xl p-5 border border-slate-800">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <div className="font-semibold text-slate-50 text-lg">Harborline Credit Union</div>
-                    <div className="text-sm text-slate-400">Line of credit • Est. rate 7.8%</div>
-                  </div>
-                  <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
+              <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
+              <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+            </div>
+            <div className="bg-slate-900 rounded-xl p-5 border border-slate-800 hover:border-slate-700 transition">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <div className="font-semibold text-slate-50 text-lg">Harborline Credit Union</div>
+                  <div className="text-sm text-slate-400">Line of credit • Est. rate 7.8%</div>
                 </div>
-                <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
-                <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+                <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
               </div>
+              <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
+              <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
             </div>
           </div>
         </div>
@@ -152,17 +170,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="bg-slate-950 rounded-2xl p-8 border border-red-500/20 bg-red-950/10 flex flex-col items-center text-center">
-              <div className="text-6xl mb-4">❌</div>
               <div className="text-5xl font-bold text-red-400 mb-3">70%</div>
               <p className="text-slate-300 text-base">Apply to wrong bank first</p>
             </div>
             <div className="bg-slate-950 rounded-2xl p-8 border border-orange-500/20 bg-orange-950/10 flex flex-col items-center text-center">
-              <div className="text-6xl mb-4">📉</div>
               <div className="text-5xl font-bold text-orange-400 mb-3">15%</div>
               <p className="text-slate-300 text-base">Drop in approval odds per rejection</p>
             </div>
             <div className="bg-slate-950 rounded-2xl p-8 border border-emerald-500/20 bg-emerald-950/10 flex flex-col items-center text-center">
-              <div className="text-6xl mb-4">✓</div>
               <div className="text-2xl font-bold text-emerald-400 mb-3">See approval likelihood</div>
               <p className="text-slate-300 text-base">before you apply</p>
             </div>
@@ -183,24 +198,21 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-6">
+              <div className="w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl font-bold mb-6">
                 1
               </div>
-              <div className="text-7xl mb-6">🔌</div>
               <h3 className="text-xl font-bold text-slate-50">Connect your financials</h3>
             </div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-6">
+              <div className="w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl font-bold mb-6">
                 2
               </div>
-              <div className="text-7xl mb-6">📊</div>
               <h3 className="text-xl font-bold text-slate-50">Get your Fundability Score</h3>
             </div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-6">
+              <div className="w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl font-bold mb-6">
                 3
               </div>
-              <div className="text-7xl mb-6">🤝</div>
               <h3 className="text-xl font-bold text-slate-50">Choose your bank & banker</h3>
             </div>
           </div>
@@ -223,25 +235,25 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <FeatureCard
-              icon="📊"
+              icon=""
               title="Fundability Score"
               shortDescription="Know your approval odds before applying"
               fullDescription="See where you stand today and what's holding you back from bank approval."
             />
             <FeatureCard
-              icon="📅"
+              icon=""
               title="Funding Window"
               shortDescription="Best time to borrow based on cash flow"
               fullDescription="Know the best time to borrow based on your cash flow and market conditions."
             />
             <FeatureCard
-              icon="🏦"
+              icon=""
               title="Real Bank Comparisons"
               shortDescription="Compare rates, fees, and approval time"
               fullDescription="Compare expected rates, fees, and time-to-close across matched banks."
             />
             <FeatureCard
-              icon="📈"
+              icon=""
               title="Credit Growth Tools"
               shortDescription="Build business credit with vendor reporting"
               fullDescription="Identify vendors and subscriptions that can report as tradelines and grow your business credit."
@@ -330,15 +342,21 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="bg-slate-900 rounded-2xl p-8 border border-slate-800 text-center">
-              <div className="text-6xl mb-4">🔒</div>
+              <div className="w-16 h-16 rounded-lg bg-emerald-500/10 border border-emerald-500/20 mx-auto mb-4 flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-emerald-400 rounded"></div>
+              </div>
               <h3 className="text-lg font-semibold text-slate-50 mb-2">Bank-level encryption</h3>
             </div>
             <div className="bg-slate-900 rounded-2xl p-8 border border-slate-800 text-center">
-              <div className="text-6xl mb-4">👁</div>
+              <div className="w-16 h-16 rounded-lg bg-emerald-500/10 border border-emerald-500/20 mx-auto mb-4 flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-emerald-400 rounded-full"></div>
+              </div>
               <h3 className="text-lg font-semibold text-slate-50 mb-2">Read-only access</h3>
             </div>
             <div className="bg-slate-900 rounded-2xl p-8 border border-slate-800 text-center">
-              <div className="text-6xl mb-4">🚫</div>
+              <div className="w-16 h-16 rounded-lg bg-emerald-500/10 border border-emerald-500/20 mx-auto mb-4 flex items-center justify-center">
+                <div className="w-6 h-6 border-2 border-emerald-400 rotate-45"></div>
+              </div>
               <h3 className="text-lg font-semibold text-slate-50 mb-2">Never shared or sold</h3>
             </div>
           </div>
