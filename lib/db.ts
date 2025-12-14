@@ -1,8 +1,20 @@
 import { Pool } from 'pg';
 
 // Railway automatically provides DATABASE_URL environment variable
+// Validate DATABASE_URL format
+const databaseUrl = process.env.DATABASE_URL;
+
+if (!databaseUrl) {
+  console.error('DATABASE_URL is not set in environment variables');
+} else if (!databaseUrl.startsWith('postgresql://') && !databaseUrl.startsWith('postgres://')) {
+  console.error('DATABASE_URL format is invalid. Should start with postgresql:// or postgres://');
+  console.error('Current DATABASE_URL (first 50 chars):', databaseUrl.substring(0, 50));
+} else {
+  console.log('DATABASE_URL is set (length:', databaseUrl.length, 'chars)');
+}
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: databaseUrl,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
