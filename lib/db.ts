@@ -38,19 +38,22 @@ export async function initDatabase() {
     `);
     
     // Add new columns if they don't exist (for existing tables)
-    await pool.query(`
-      DO $$ 
-      BEGIN
-        IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
-                       WHERE table_name='leads' AND column_name='funding_type') THEN
-          ALTER TABLE leads ADD COLUMN funding_type VARCHAR(255);
-        END IF;
-        IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
-                       WHERE table_name='leads' AND column_name='funding_amount') THEN
-          ALTER TABLE leads ADD COLUMN funding_amount VARCHAR(255);
-        END IF;
-      END $$;
-    `);
+    try {
+      await pool.query(`
+        ALTER TABLE leads 
+        ADD COLUMN IF NOT EXISTS funding_type VARCHAR(255);
+      `);
+      await pool.query(`
+        ALTER TABLE leads 
+        ADD COLUMN IF NOT EXISTS funding_amount VARCHAR(255);
+      `);
+      console.log('Database columns verified/added');
+    } catch (migrationError: any) {
+      // If columns already exist, that's fine
+      if (!migrationError.message.includes('already exists')) {
+        console.error('Migration error (non-critical):', migrationError.message);
+      }
+    }
     
     console.log('Database table initialized');
   } catch (error: any) {
