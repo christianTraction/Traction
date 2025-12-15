@@ -137,7 +137,7 @@ export default function Home() {
                 <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded">High</span>
               </div>
               <div className="text-xs text-slate-500 mb-2">Approval likelihood: High</div>
-              <button className="text-xs text-emerald-400 hover:text-emerald-300">Get introduced →</button>
+              <a href="#cta-form" className="text-xs text-emerald-400 hover:text-emerald-300 inline-block">Get introduced →</a>
             </div>
             <div className="bg-slate-900 rounded-xl p-5 border border-slate-800 hover:border-slate-700 transition">
               <div className="flex justify-between items-start mb-2">
@@ -148,7 +148,7 @@ export default function Home() {
                 <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
               </div>
               <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
-              <button className="text-xs text-emerald-400 hover:text-emerald-300">Get introduced →</button>
+              <a href="#cta-form" className="text-xs text-emerald-400 hover:text-emerald-300 inline-block">Get introduced →</a>
             </div>
             <div className="bg-slate-900 rounded-xl p-5 border border-slate-800 hover:border-slate-700 transition">
               <div className="flex justify-between items-start mb-2">
@@ -159,7 +159,7 @@ export default function Home() {
                 <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
               </div>
               <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
-              <button className="text-xs text-emerald-400 hover:text-emerald-300">Get introduced →</button>
+              <a href="#cta-form" className="text-xs text-emerald-400 hover:text-emerald-300 inline-block">Get introduced →</a>
             </div>
           </div>
         </div>
@@ -437,9 +437,9 @@ export default function Home() {
                   <span>Email tips and insights</span>
                 </li>
               </ul>
-              <button className="w-full border border-slate-700 hover:border-slate-600 text-slate-50 px-6 py-3 rounded-lg font-semibold transition">
+              <a href="#cta-form" className="w-full border border-slate-700 hover:border-slate-600 text-slate-50 px-6 py-3 rounded-lg font-semibold transition block text-center">
                 Get Started Free
-              </button>
+              </a>
             </div>
             <div className="bg-slate-950 rounded-2xl p-10 border-2 border-emerald-500 relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -477,9 +477,9 @@ export default function Home() {
                   <span>2 banker introductions per year</span>
                 </li>
               </ul>
-              <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition mb-2">
+              <a href="#cta-form" className="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition mb-2 block text-center">
                 Start 7-Day Free Trial
-              </button>
+              </a>
               <p className="text-xs text-slate-400 text-center">Cancel anytime. No hidden fees.</p>
             </div>
           </div>
