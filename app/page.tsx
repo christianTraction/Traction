@@ -10,8 +10,10 @@ import Metric from "@/components/Metric";
 export default function Home() {
   const [formData, setFormData] = useState({ 
     email: "", 
-    fundingType: "", 
-    fundingAmount: "" 
+    creditScore: "",
+    fundingAmount: "",
+    annualRevenue: "",
+    timeInBusiness: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -26,8 +28,8 @@ export default function Home() {
       });
       const data = await response.json();
       if (response.ok) {
-        alert("Thank you! We'll be in touch soon.");
-        setFormData({ email: "", fundingType: "", fundingAmount: "" });
+        alert("Thank you! We'll calculate your Approval Score and send results shortly.");
+        setFormData({ email: "", creditScore: "", fundingAmount: "", annualRevenue: "", timeInBusiness: "" });
         // TODO: Transition to Step 2
       } else {
         alert(data.message || "Something went wrong. Please try again.");
@@ -559,14 +561,15 @@ export default function Home() {
               See which banks will approve you—before you apply
             </h2>
             <p className="text-lg text-slate-300 text-center mb-12 max-w-[680px] mx-auto">
-              Stop guessing. Stop getting rejected.<br /><br />
-              Get your free Approval Score and see which lenders want your business. Takes 3 minutes. No credit check.
+              Get your free Approval Score and see which lenders want your business. 
+              Takes 3 minutes. No credit check.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto">
-              {/* Email Field */}
+            <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
+              
+              {/* Question 1: Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-                  Email Address
+                  Email address
                 </label>
                 <input
                   type="email"
@@ -575,7 +578,7 @@ export default function Home() {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="you@company.com"
+                  placeholder="you@yourbusiness.com"
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 />
                 <p className="text-xs text-slate-400 mt-1">
@@ -583,30 +586,32 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Funding Type Field */}
+              {/* Question 2: Credit Score */}
               <div>
-                <label htmlFor="fundingType" className="block text-sm font-medium text-slate-300 mb-2">
-                  What do you need funding for?
+                <label htmlFor="creditScore" className="block text-sm font-medium text-slate-300 mb-2">
+                  What's your estimated personal credit score?
                 </label>
                 <select
-                  id="fundingType"
-                  name="fundingType"
+                  id="creditScore"
+                  name="creditScore"
                   required
-                  value={formData.fundingType}
-                  onChange={(e) => setFormData({ ...formData, fundingType: e.target.value })}
+                  value={formData.creditScore}
+                  onChange={(e) => setFormData({ ...formData, creditScore: e.target.value })}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 >
-                  <option value="">Select an option</option>
-                  <option value="Working capital">Working capital</option>
-                  <option value="Equipment purchase">Equipment purchase</option>
-                  <option value="Expansion / new hire">Expansion / new hire</option>
-                  <option value="Real estate">Real estate</option>
-                  <option value="Refinancing existing debt">Refinancing existing debt</option>
-                  <option value="Other">Other</option>
+                  <option value="">Select your range</option>
+                  <option value="Excellent (720+)">Excellent (720+)</option>
+                  <option value="Good (680-719)">Good (680-719)</option>
+                  <option value="Fair (640-679)">Fair (640-679)</option>
+                  <option value="Building (580-639)">Building (580-639)</option>
+                  <option value="Not sure">Not sure</option>
                 </select>
+                <p className="text-xs text-slate-400 mt-1">
+                  This helps us match you with the right lenders. Check for free at Credit Karma.
+                </p>
               </div>
 
-              {/* Funding Amount Field */}
+              {/* Question 3: Funding Amount */}
               <div>
                 <label htmlFor="fundingAmount" className="block text-sm font-medium text-slate-300 mb-2">
                   How much funding do you need?
@@ -619,29 +624,76 @@ export default function Home() {
                   onChange={(e) => setFormData({ ...formData, fundingAmount: e.target.value })}
                   className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                 >
-                  <option value="">Select an option</option>
-                  <option value="$10k–$50k">$10k–$50k</option>
-                  <option value="$50k–$100k">$50k–$100k</option>
-                  <option value="$100k–$250k">$100k–$250k</option>
-                  <option value="$250k–$500k">$250k–$500k</option>
+                  <option value="">Select an amount</option>
+                  <option value="$10k–$50k">$10k – $50k</option>
+                  <option value="$50k–$100k">$50k – $100k</option>
+                  <option value="$100k–$250k">$100k – $250k</option>
+                  <option value="$250k–$500k">$250k – $500k</option>
                   <option value="$500k+">$500k+</option>
                 </select>
               </div>
 
-              {/* Primary CTA Button */}
-              <div className="pt-2">
+              {/* Question 4: Annual Revenue */}
+              <div>
+                <label htmlFor="annualRevenue" className="block text-sm font-medium text-slate-300 mb-2">
+                  What's your annual revenue?
+                </label>
+                <select
+                  id="annualRevenue"
+                  name="annualRevenue"
+                  required
+                  value={formData.annualRevenue}
+                  onChange={(e) => setFormData({ ...formData, annualRevenue: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                >
+                  <option value="">Select your range</option>
+                  <option value="Under $100k">Under $100k</option>
+                  <option value="$100k–$250k">$100k – $250k</option>
+                  <option value="$250k–$500k">$250k – $500k</option>
+                  <option value="$500k–$1M">$500k – $1M</option>
+                  <option value="$1M–$5M">$1M – $5M</option>
+                  <option value="$5M+">$5M+</option>
+                </select>
+                <p className="text-xs text-slate-400 mt-1">
+                  Estimated annual gross revenue (before expenses).
+                </p>
+              </div>
+
+              {/* Question 5: Time in Business */}
+              <div>
+                <label htmlFor="timeInBusiness" className="block text-sm font-medium text-slate-300 mb-2">
+                  How long have you been in business?
+                </label>
+                <select
+                  id="timeInBusiness"
+                  name="timeInBusiness"
+                  required
+                  value={formData.timeInBusiness}
+                  onChange={(e) => setFormData({ ...formData, timeInBusiness: e.target.value })}
+                  className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                >
+                  <option value="">Select timeframe</option>
+                  <option value="Less than 6 months">Less than 6 months</option>
+                  <option value="6 months–1 year">6 months – 1 year</option>
+                  <option value="1–2 years">1 – 2 years</option>
+                  <option value="2–5 years">2 – 5 years</option>
+                  <option value="5+ years">5+ years</option>
+                </select>
+              </div>
+
+              {/* Submit Button */}
+              <div className="pt-4">
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold text-lg transition shadow-lg shadow-emerald-500/20"
                 >
-                  {isSubmitting ? "Submitting..." : "See My Approval Odds"}
+                  {isSubmitting ? "Calculating..." : "See My Approval Odds"}
                 </button>
                 
-                {/* Micro-Trust Copy */}
-            <p className="text-xs text-slate-400 text-center mt-3">
-              Free • 3 minutes • No credit check
-            </p>
+                <p className="text-xs text-slate-400 text-center mt-3">
+                  Free • 3 minutes • No credit check
+                </p>
               </div>
             </form>
           </div>

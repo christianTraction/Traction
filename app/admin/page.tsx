@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 interface Lead {
   id: number;
   email: string;
-  goal: string | null;
-  funding_type: string | null;
+  credit_score: string | null;
   funding_amount: string | null;
+  annual_revenue: string | null;
+  time_in_business: string | null;
   created_at: string;
 }
 
@@ -75,11 +76,14 @@ export default function AdminPage() {
   };
 
   const exportCSV = () => {
-    const headers = ["ID", "Email", "Goal", "Date"];
+    const headers = ["ID", "Email", "Credit Score", "Amount", "Revenue", "Time in Business", "Date"];
     const rows = leads.map((lead) => [
       lead.id,
       lead.email,
-      lead.goal || "",
+      lead.credit_score || "",
+      lead.funding_amount || "",
+      lead.annual_revenue || "",
+      lead.time_in_business || "",
       formatDate(lead.created_at),
     ]);
 
@@ -179,10 +183,16 @@ export default function AdminPage() {
                       Email
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
-                      Funding Type
+                      Credit Score
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
-                      Funding Amount
+                      Amount
+                    </th>
+                    <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
+                      Revenue
+                    </th>
+                    <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
+                      Time in Business
                     </th>
                     <th className="text-left px-6 py-4 text-sm font-semibold text-slate-300">
                       Submitted
@@ -202,12 +212,22 @@ export default function AdminPage() {
                         {lead.email}
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-300">
-                        {lead.funding_type || lead.goal || (
+                        {lead.credit_score || (
                           <span className="text-slate-500 italic">Not specified</span>
                         )}
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-300">
                         {lead.funding_amount || (
+                          <span className="text-slate-500 italic">—</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-slate-300">
+                        {lead.annual_revenue || (
+                          <span className="text-slate-500 italic">—</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-slate-300">
+                        {lead.time_in_business || (
                           <span className="text-slate-500 italic">—</span>
                         )}
                       </td>

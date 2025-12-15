@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { email, fundingType, fundingAmount } = body;
+    const { email, creditScore, fundingAmount, annualRevenue, timeInBusiness } = body;
 
     // Validate email
     if (!email || !email.includes('@')) {
@@ -33,24 +33,23 @@ export async function POST(request: Request) {
     }
 
     // Validate required fields
-    if (!fundingType || !fundingAmount) {
+    if (!creditScore || !fundingAmount || !annualRevenue || !timeInBusiness) {
       return NextResponse.json(
-        { success: false, message: "Please fill in all required fields." },
+        { success: false, message: "Please fill out all fields." },
         { status: 400 }
       );
     }
 
-    // Combine funding info for backward compatibility with goal field
-    const goal = fundingType && fundingAmount ? `${fundingType} - ${fundingAmount}` : '';
-
     // Save to database with new fields
-    const lead = await saveLead(email, goal, fundingType, fundingAmount);
+    const lead = await saveLead(email, creditScore, fundingAmount, annualRevenue, timeInBusiness);
 
     console.log("New lead saved:", { 
       id: lead.id, 
       email, 
-      fundingType, 
-      fundingAmount, 
+      creditScore, 
+      fundingAmount,
+      annualRevenue,
+      timeInBusiness,
       timestamp: lead.created_at 
     });
 

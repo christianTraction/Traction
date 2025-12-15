@@ -30,9 +30,10 @@ export async function initDatabase() {
       CREATE TABLE IF NOT EXISTS leads (
         id SERIAL PRIMARY KEY,
         email VARCHAR(255) NOT NULL,
-        goal TEXT,
-        funding_type VARCHAR(255),
-        funding_amount VARCHAR(255),
+        credit_score VARCHAR(50),
+        funding_amount VARCHAR(50),
+        annual_revenue VARCHAR(50),
+        time_in_business VARCHAR(50),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
@@ -41,11 +42,15 @@ export async function initDatabase() {
     try {
       await pool.query(`
         ALTER TABLE leads 
-        ADD COLUMN IF NOT EXISTS funding_type VARCHAR(255);
+        ADD COLUMN IF NOT EXISTS credit_score VARCHAR(50);
       `);
       await pool.query(`
         ALTER TABLE leads 
-        ADD COLUMN IF NOT EXISTS funding_amount VARCHAR(255);
+        ADD COLUMN IF NOT EXISTS annual_revenue VARCHAR(50);
+      `);
+      await pool.query(`
+        ALTER TABLE leads 
+        ADD COLUMN IF NOT EXISTS time_in_business VARCHAR(50);
       `);
       console.log('Database columns verified/added');
     } catch (migrationError: any) {
@@ -67,14 +72,15 @@ export async function initDatabase() {
 // Save a lead to the database
 export async function saveLead(
   email: string, 
-  goal: string, 
-  fundingType?: string, 
-  fundingAmount?: string
+  creditScore: string, 
+  fundingAmount: string, 
+  annualRevenue: string, 
+  timeInBusiness: string
 ) {
   try {
     const result = await pool.query(
-      'INSERT INTO leads (email, goal, funding_type, funding_amount) VALUES ($1, $2, $3, $4) RETURNING *',
-      [email, goal || null, fundingType || null, fundingAmount || null]
+      'INSERT INTO leads (email, credit_score, funding_amount, annual_revenue, time_in_business) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [email, creditScore, fundingAmount, annualRevenue, timeInBusiness]
     );
     return result.rows[0];
   } catch (error) {
