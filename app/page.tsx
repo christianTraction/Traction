@@ -82,17 +82,17 @@ export default function Home() {
           {/* Left Column: Text Content */}
           <div className="space-y-6">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-balance">
-              Know which banks will say yes—before you apply
+              Stop applying to banks that will reject you
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed max-w-[680px]">
-              Connect your financials. Get your Fundability Score. See matched banks in 3 minutes.
+              See your approval odds at every bank before you apply. Get matched with lenders that want your business—in 3 minutes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#cta-form"
                 className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg text-center transition shadow-lg shadow-emerald-500/20"
               >
-                See My Bank Matches
+                See My Approval Odds
               </a>
             </div>
             <p className="text-sm text-slate-400">
@@ -114,7 +114,7 @@ export default function Home() {
             {/* Fundability Score - Overlaid at Bottom */}
             <div className="absolute bottom-4 left-4 right-4 lg:bottom-6 lg:left-6 lg:right-6">
               <div className="bg-slate-900/95 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-slate-700 shadow-2xl">
-                <div className="text-sm text-slate-400 mb-2">Fundability Score</div>
+                <div className="text-sm text-slate-400 mb-2">Approval Score</div>
                 <div className="text-5xl lg:text-6xl font-bold text-emerald-400 mb-3">82</div>
                 <div className="text-lg lg:text-xl text-slate-200 mb-4">Strong — 3 banks actively lending</div>
                 <div className="bg-slate-800/80 rounded-lg p-3 lg:p-4 text-sm lg:text-base text-slate-300">
@@ -137,7 +137,7 @@ export default function Home() {
                 <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded">High</span>
               </div>
               <div className="text-xs text-slate-500 mb-2">Approval likelihood: High</div>
-              <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+              <button className="text-xs text-emerald-400 hover:text-emerald-300">Get introduced →</button>
             </div>
             <div className="bg-slate-900 rounded-xl p-5 border border-slate-800 hover:border-slate-700 transition">
               <div className="flex justify-between items-start mb-2">
@@ -148,7 +148,7 @@ export default function Home() {
                 <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
               </div>
               <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
-              <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+              <button className="text-xs text-emerald-400 hover:text-emerald-300">Get introduced →</button>
             </div>
             <div className="bg-slate-900 rounded-xl p-5 border border-slate-800 hover:border-slate-700 transition">
               <div className="flex justify-between items-start mb-2">
@@ -159,7 +159,7 @@ export default function Home() {
                 <span className="text-xs bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded">Medium</span>
               </div>
               <div className="text-xs text-slate-500 mb-2">Approval likelihood: Medium</div>
-              <button className="text-xs text-emerald-400 hover:text-emerald-300">View banker →</button>
+              <button className="text-xs text-emerald-400 hover:text-emerald-300">Get introduced →</button>
             </div>
           </div>
         </div>
@@ -168,18 +168,21 @@ export default function Home() {
       {/* Problem Section - Stat Cards */}
       <section id="problem" className="bg-slate-900 py-20 mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 text-slate-50">
+            The way small businesses get funding is broken
+          </h2>
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="bg-slate-950 rounded-2xl p-8 border border-red-500/20 bg-red-950/10 flex flex-col items-center text-center">
-              <div className="text-5xl font-bold text-red-400 mb-3">70%</div>
-              <p className="text-slate-300 text-base">Apply to wrong bank first</p>
+              <div className="text-5xl font-bold text-red-400 mb-3">7 in 10</div>
+              <p className="text-slate-300 text-base">businesses apply to a bank that was never going to approve them—wasting weeks and hurting their credit</p>
             </div>
             <div className="bg-slate-950 rounded-2xl p-8 border border-orange-500/20 bg-orange-950/10 flex flex-col items-center text-center">
-              <div className="text-5xl font-bold text-orange-400 mb-3">15%</div>
-              <p className="text-slate-300 text-base">Drop in approval odds per rejection</p>
+              <div className="text-5xl font-bold text-orange-400 mb-3">Each rejection</div>
+              <p className="text-slate-300 text-base">drops your approval odds 15% at every other bank—making good lenders say no too</p>
             </div>
             <div className="bg-slate-950 rounded-2xl p-8 border border-emerald-500/20 bg-emerald-950/10 flex flex-col items-center text-center">
-              <div className="text-2xl font-bold text-emerald-400 mb-3">See approval likelihood</div>
-              <p className="text-slate-300 text-base">before you apply</p>
+              <div className="text-2xl font-bold text-emerald-400 mb-3">Your advantage</div>
+              <p className="text-slate-300 text-base">See which banks will approve you before you ever apply—and skip straight to the ones that want you</p>
             </div>
           </div>
           <div className="text-center">
@@ -187,7 +190,7 @@ export default function Home() {
               href="#cta-form"
               className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg shadow-emerald-500/20"
             >
-              See My Bank Matches
+              See My Approval Odds
             </a>
           </div>
         </div>
@@ -210,8 +213,8 @@ export default function Home() {
               <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-bold mb-4">
                 1
               </div>
-              <h3 className="text-xl font-bold text-slate-50 mb-2">Connect your financials</h3>
-              <p className="text-sm text-slate-400">Bank and accounting data in minutes</p>
+              <h3 className="text-xl font-bold text-slate-50 mb-2">Link your business accounts</h3>
+              <p className="text-sm text-slate-400">Secure, read-only connection to your bank and accounting software. Takes 2 minutes.</p>
             </div>
 
             {/* Step 2 - Analyze */}
@@ -224,8 +227,8 @@ export default function Home() {
               <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-bold mb-4">
                 2
               </div>
-              <h3 className="text-xl font-bold text-slate-50 mb-2">Get your Fundability Score</h3>
-              <p className="text-sm text-slate-400">AI analyzes your approval likelihood</p>
+              <h3 className="text-xl font-bold text-slate-50 mb-2">See which banks will approve you</h3>
+              <p className="text-sm text-slate-400">We calculate your approval likelihood at every lender based on what they're actively funding right now.</p>
             </div>
 
             {/* Step 3 - Choose */}
@@ -238,8 +241,8 @@ export default function Home() {
               <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center text-sm font-bold mb-4">
                 3
               </div>
-              <h3 className="text-xl font-bold text-slate-50 mb-2">Choose your bank & banker</h3>
-              <p className="text-sm text-slate-400">Review matches and connect directly</p>
+              <h3 className="text-xl font-bold text-slate-50 mb-2">Apply with confidence</h3>
+              <p className="text-sm text-slate-400">Compare rates and terms, then get introduced to the banker who's most likely to say yes.</p>
             </div>
           </div>
           <div className="text-center">
@@ -247,7 +250,7 @@ export default function Home() {
               href="#cta-form"
               className="inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg shadow-emerald-500/20"
             >
-              See My Bank Matches
+              Get Started Free
             </a>
           </div>
         </div>
@@ -262,27 +265,27 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <FeatureCard
               icon="score"
-              title="Fundability Score"
-              shortDescription="Know your approval odds before applying"
-              fullDescription="See where you stand today and what's holding you back from bank approval."
+              title="Approval Predictor"
+              shortDescription="See your approval odds before you apply"
+              fullDescription="Know exactly where you stand with every lender. We show you which banks are likely to approve you, which are on the fence, and which will reject you—before you waste time applying."
             />
             <FeatureCard
               icon="window"
-              title="Funding Window"
-              shortDescription="Best time to borrow based on cash flow"
-              fullDescription="Know the best time to borrow based on your cash flow and market conditions."
+              title="Best Time to Borrow"
+              shortDescription="Find the perfect funding window based on your cash flow"
+              fullDescription="Our algorithm analyzes your revenue patterns and tells you the best 30-60 day window to apply—when banks are most likely to approve you and you're most likely to repay on time."
             />
             <FeatureCard
               icon="compare"
-              title="Real Bank Comparisons"
-              shortDescription="Compare rates, fees, and approval time"
-              fullDescription="Compare expected rates, fees, and time-to-close across matched banks."
+              title="Real Rate Comparisons"
+              shortDescription="Compare actual rates, fees, and terms side-by-side"
+              fullDescription="See exactly what each bank will charge you—estimated rates, origination fees, repayment terms, and time to close—all in one place, so you pick the best deal."
             />
             <FeatureCard
               icon="credit"
-              title="Credit Growth Tools"
-              shortDescription="Build business credit with vendor reporting"
-              fullDescription="Identify vendors and subscriptions that can report as tradelines and grow your business credit."
+              title="Credit Building"
+              shortDescription="Turn vendor payments into business credit"
+              fullDescription="We identify which of your current vendors report to business credit bureaus. Pay them on time, build your credit score, and qualify for better rates every year."
             />
           </div>
         </div>
@@ -293,7 +296,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-900 rounded-2xl p-12 border border-slate-800 text-center">
             <p className="text-xl italic text-slate-200 leading-relaxed max-w-[600px] mx-auto mb-6">
-              "We built Traction after experiencing 12 rejections for our family construction business—not because we couldn't do the work, but because we didn't fit the model."
+              "I watched my family's construction business get rejected by 12 banks—not because we couldn't do the work, but because we didn't fit their credit model. Traction exists so no business owner has to go through that again. Every business deserves to know which banks will say yes before they waste months hearing no."
             </p>
             <p className="text-slate-400 font-medium">— Traction Founder</p>
           </div>
@@ -310,22 +313,22 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1 text-xl">✓</span>
                   <div>
-                    <div className="font-semibold text-slate-50">Your Fundability Score</div>
-                    <div className="text-sm">See where you stand and what's holding you back</div>
+                    <div className="font-semibold text-slate-50">Your Approval Score</div>
+                    <div className="text-sm">See where you stand with every bank and what's holding you back</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1 text-xl">✓</span>
                   <div>
-                    <div className="font-semibold text-slate-50">Likely-fit banks</div>
-                    <div className="text-sm">Matched based on your profile and their current appetite</div>
+                    <div className="font-semibold text-slate-50">Banks that want you</div>
+                    <div className="text-sm">Matched based on what they're actively funding right now</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1 text-xl">✓</span>
                   <div>
-                    <div className="font-semibold text-slate-50">Next-step checklist</div>
-                    <div className="text-sm">Clear actions to improve your approval odds</div>
+                    <div className="font-semibold text-slate-50">Your next steps</div>
+                    <div className="text-sm">Clear actions to improve your approval odds before you apply</div>
                   </div>
                 </li>
               </ul>
@@ -336,22 +339,22 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <span className="text-red-400 mt-1 text-xl">×</span>
                   <div>
-                    <div className="font-semibold text-slate-50">Hard credit pulls</div>
-                    <div className="text-sm">We use soft checks only—no impact on your credit score</div>
+                    <div className="font-semibold text-slate-50">Hard credit checks</div>
+                    <div className="text-sm">Soft checks only—won't affect your credit score at all</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-400 mt-1 text-xl">×</span>
                   <div>
-                    <div className="font-semibold text-slate-50">Spam or unwanted calls</div>
-                    <div className="text-sm">You choose when and who to contact</div>
+                    <div className="font-semibold text-slate-50">Spam or pressure</div>
+                    <div className="text-sm">You choose which banks to contact and when</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-red-400 mt-1 text-xl">×</span>
                   <div>
-                    <div className="font-semibold text-slate-50">Sell your leads</div>
-                    <div className="text-sm">Your data stays private and secure</div>
+                    <div className="font-semibold text-slate-50">Share your information</div>
+                    <div className="text-sm">Your data stays between you and the lenders you choose—never sold</div>
                   </div>
                 </li>
               </ul>
@@ -364,7 +367,7 @@ export default function Home() {
       <section className="py-20 mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            Your Data is Protected
+            Share your data with confidence
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {/* Bank-level Encryption */}
@@ -375,7 +378,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold text-slate-50 mb-2">Bank-level encryption</h3>
-              <p className="text-sm text-slate-400">256-bit SSL protection</p>
+              <p className="text-sm text-slate-400">The same 256-bit SSL protection your bank uses to secure your checking account</p>
             </div>
 
             {/* Read-only Access */}
@@ -387,7 +390,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold text-slate-50 mb-2">Read-only access</h3>
-              <p className="text-sm text-slate-400">We never move your money</p>
+              <p className="text-sm text-slate-400">We can see your financial data, but we can never move, transfer, or withdraw your money</p>
             </div>
 
             {/* Never Shared */}
@@ -398,7 +401,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-lg font-semibold text-slate-50 mb-2">Never shared or sold</h3>
-              <p className="text-sm text-slate-400">Your data stays private</p>
+              <p className="text-sm text-slate-400">Your information stays between you and the banks you choose to contact—period</p>
             </div>
           </div>
         </div>
@@ -408,33 +411,34 @@ export default function Home() {
       <section id="pricing" className="bg-slate-900 py-20 mb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            Start free. Upgrade when you're ready to stay fundable.
+            Start free. Upgrade when funding becomes a priority.
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="bg-slate-950 rounded-2xl p-10 border border-slate-800">
               <h3 className="text-2xl font-semibold mb-2">FREE</h3>
-              <p className="text-slate-300 mb-4 text-sm">Know where you stand</p>
+              <p className="text-slate-300 mb-4 text-sm">Get your first approval score</p>
+              <p className="text-xs text-slate-400 mb-4">Perfect for: One-time funding needs or first-time borrowers</p>
               <div className="text-4xl font-bold text-slate-50 mb-8">$0</div>
               <ul className="space-y-3 mb-8 text-slate-300 text-sm">
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>One-time Fundability Score</span>
+                  <span>One-time Approval Score</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Basic bank guidance</span>
+                  <span>See which banks might approve you</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Funding checklist</span>
+                  <span>Basic funding checklist</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Email insights</span>
+                  <span>Email tips and insights</span>
                 </li>
               </ul>
               <button className="w-full border border-slate-700 hover:border-slate-600 text-slate-50 px-6 py-3 rounded-lg font-semibold transition">
-                Start free
+                Get Started Free
               </button>
             </div>
             <div className="bg-slate-950 rounded-2xl p-10 border-2 border-emerald-500 relative">
@@ -442,38 +446,39 @@ export default function Home() {
                 Most popular
               </div>
               <h3 className="text-2xl font-semibold mb-2">PRO</h3>
-              <p className="text-slate-300 mb-4 text-sm">Stay fundable & grow</p>
+              <p className="text-slate-300 mb-4 text-sm">Build long-term fundability</p>
+              <p className="text-xs text-slate-400 mb-4">Perfect for: Growing businesses that need ongoing access to capital</p>
               <div className="text-4xl font-bold text-emerald-400 mb-8">
                 $49.99<span className="text-2xl text-slate-300">/month</span>
               </div>
               <ul className="space-y-3 mb-8 text-slate-300 text-sm">
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Monthly Fundability Score</span>
+                  <span>Monthly Approval Score updates</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Bank & banker matches</span>
+                  <span>Live bank matches with approval odds</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Rate & fee comparisons</span>
+                  <span>Real rate and fee comparisons</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Credit growth tools</span>
+                  <span>Credit building recommendations</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Market alerts</span>
+                  <span>Market alerts when new programs open</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-emerald-400 mt-1">✓</span>
-                  <span>Banker introductions</span>
+                  <span>2 banker introductions per year</span>
                 </li>
               </ul>
               <button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold transition mb-2">
-                Upgrade to Pro
+                Start 7-Day Free Trial
               </button>
               <p className="text-xs text-slate-400 text-center">Cancel anytime. No hidden fees.</p>
             </div>
@@ -551,10 +556,11 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-900 rounded-2xl p-8 sm:p-10 md:p-12 border border-slate-800">
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6 max-w-[680px] mx-auto">
-              We help small business owners get approved—unlocking growth for the people who move our economy forward.
+              See which banks will approve you—before you apply
             </h2>
             <p className="text-lg text-slate-300 text-center mb-12 max-w-[680px] mx-auto">
-              If you're planning to hire, buy equipment, or smooth out your cash flow, the right bank relationship changes everything.
+              Stop guessing. Stop getting rejected.<br /><br />
+              Get your free Approval Score and see which lenders want your business. Takes 3 minutes. No credit check.
             </p>
             <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto">
               {/* Email Field */}
@@ -580,7 +586,7 @@ export default function Home() {
               {/* Funding Type Field */}
               <div>
                 <label htmlFor="fundingType" className="block text-sm font-medium text-slate-300 mb-2">
-                  What are you looking to fund?
+                  What do you need funding for?
                 </label>
                 <select
                   id="fundingType"
@@ -594,6 +600,7 @@ export default function Home() {
                   <option value="Working capital">Working capital</option>
                   <option value="Equipment purchase">Equipment purchase</option>
                   <option value="Expansion / new hire">Expansion / new hire</option>
+                  <option value="Real estate">Real estate</option>
                   <option value="Refinancing existing debt">Refinancing existing debt</option>
                   <option value="Other">Other</option>
                 </select>
@@ -628,12 +635,12 @@ export default function Home() {
                   disabled={isSubmitting}
                   className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold text-lg transition shadow-lg shadow-emerald-500/20"
                 >
-                  {isSubmitting ? "Submitting..." : "See my bank matches"}
+                  {isSubmitting ? "Submitting..." : "See My Approval Odds"}
                 </button>
                 
                 {/* Micro-Trust Copy */}
             <p className="text-xs text-slate-400 text-center mt-3">
-              No hard credit pull. Won't affect your score.
+              Free • 3 minutes • No credit check
             </p>
               </div>
             </form>
