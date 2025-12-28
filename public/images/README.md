@@ -42,3 +42,4 @@ After adding the photo, verify:
 - The Fundability Score card will overlay on the bottom with a backdrop blur effect
 - On mobile, the photo will stack above the text content
 
+
