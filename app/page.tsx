@@ -51,7 +51,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.svg"
                 alt="Traction Logo"
                 width={40}
                 height={40}
