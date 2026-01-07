@@ -24,8 +24,10 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { email, creditScore, fundingAmount, annualRevenue, timeInBusiness } = body;
 
-    // Validate email
-    if (!email || !email.includes('@')) {
+    // Validate email with proper regex pattern
+    // This pattern checks for: local-part@domain format with basic validations
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
       return NextResponse.json(
         { success: false, message: "Please provide a valid email address." },
         { status: 400 }

@@ -13,13 +13,21 @@ if (!databaseUrl) {
   console.log('DATABASE_URL is set (length:', databaseUrl.length, 'chars)');
 }
 
-const pool = new Pool({
-  connectionString: databaseUrl,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-});
+// Only create pool if DATABASE_URL is valid
+// This prevents runtime errors when DATABASE_URL is undefined
+const pool = databaseUrl && (databaseUrl.startsWith('postgresql://') || databaseUrl.startsWith('postgres://'))
+  ? new Pool({
+      connectionString: databaseUrl,
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+    })
+  : null;
 
 // Initialize database table
 export async function initDatabase() {
+  if (!pool) {
+    throw new Error('Database connection not configured. DATABASE_URL environment variable is required.');
+  }
+  
   try {
     // Test connection first
     await pool.query('SELECT NOW()');
@@ -77,6 +85,10 @@ export async function saveLead(
   annualRevenue: string, 
   timeInBusiness: string
 ) {
+  if (!pool) {
+    throw new Error('Database connection not configured. DATABASE_URL environment variable is required.');
+  }
+  
   try {
     const result = await pool.query(
       'INSERT INTO leads (email, credit_score, funding_amount, annual_revenue, time_in_business) VALUES ($1, $2, $3, $4, $5) RETURNING *',
@@ -91,6 +103,10 @@ export async function saveLead(
 
 // Get all leads (for admin view)
 export async function getAllLeads() {
+  if (!pool) {
+    throw new Error('Database connection not configured. DATABASE_URL environment variable is required.');
+  }
+  
   try {
     const result = await pool.query(
       'SELECT * FROM leads ORDER BY created_at DESC'

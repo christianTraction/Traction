@@ -1,19 +1,28 @@
 import { NextResponse } from "next/server";
 import { getAllLeads, initDatabase } from "@/lib/db";
+import { cookies } from "next/headers";
 
 // Initialize database on first request
 let dbInitialized = false;
 
 export async function GET(request: Request) {
   try {
+    // Check authentication
+    const cookieStore = await cookies();
+    const adminSession = cookieStore.get("admin_session");
+    
+    if (!adminSession || adminSession.value !== "authenticated") {
+      return NextResponse.json(
+        { success: false, message: "Unauthorized. Please log in." },
+        { status: 401 }
+      );
+    }
+
     // Initialize database if not already done
     if (!dbInitialized) {
       await initDatabase();
       dbInitialized = true;
     }
-
-    // In production, you'd want to add authentication here
-    // For now, this is open - you can add password protection later
     
     const leads = await getAllLeads();
 

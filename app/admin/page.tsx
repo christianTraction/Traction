@@ -19,28 +19,49 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
 
-  // Simple password protection (you should use proper auth in production)
-  const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "traction2024";
-
   useEffect(() => {
-    // Check if already authenticated
-    const isAuth = sessionStorage.getItem("admin_authenticated");
-    if (isAuth === "true") {
-      setAuthenticated(true);
-      fetchLeads();
-    } else {
-      setLoading(false);
-    }
+    // Check if already authenticated by trying to fetch leads
+    // The API will return 401 if not authenticated
+    checkAuthentication();
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const checkAuthentication = async () => {
+    try {
+      const response = await fetch("/api/leads");
+      if (response.ok) {
+        setAuthenticated(true);
+        fetchLeads();
+      } else {
+        setLoading(false);
+      }
+    } catch (err) {
+      setLoading(false);
+    }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      setAuthenticated(true);
-      sessionStorage.setItem("admin_authenticated", "true");
-      fetchLeads();
-    } else {
-      setError("Incorrect password");
+    setError(null);
+    
+    try {
+      const response = await fetch("/api/admin/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setAuthenticated(true);
+        fetchLeads();
+      } else {
+        setError(data.message || "Incorrect password");
+      }
+    } catch (err) {
+      setError("Login failed. Please try again.");
     }
   };
 
