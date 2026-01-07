@@ -1,6 +1,26 @@
-# Hero Photo Instructions
+# Images Directory
 
-## Required Photo
+## Logo
+
+### Required Logo
+Place your company logo here as: `logo.png` (or `logo.svg`, `logo.jpg`, `logo.webp`)
+
+### Logo Specifications
+- **File name:** `logo.png` (or `.svg`, `.jpg`, `.webp`)
+- **Location:** `/public/images/logo.png`
+- **Size:** Optimized to <100kb for fast loading
+- **Format:** PNG (with transparency), SVG, JPG, or WebP
+- **Dimensions:** Recommended 80x80px to 200x200px (will be displayed at 40x40px)
+- **Aspect ratio:** Square (1:1) recommended
+
+### Notes
+- The logo will be displayed in the navigation bar at 40x40px
+- SVG format is recommended for crisp display at all sizes
+- PNG with transparency works well for logos with transparent backgrounds
+
+## Hero Photo Instructions
+
+### Required Photo
 Place your hero business owner photo here as: `hero-business-owner.jpg`
 
 ## Photo Specifications
@@ -41,5 +61,6 @@ After adding the photo, verify:
 - The photo will be displayed at a 3:4 aspect ratio
 - The Fundability Score card will overlay on the bottom with a backdrop blur effect
 - On mobile, the photo will stack above the text content
+
 
 
