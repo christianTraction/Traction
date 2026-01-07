@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { getAllLeads, initDatabase } from "@/lib/db";
 import { cookies } from "next/headers";
 
+// Mark this route as dynamic since it uses cookies
+export const dynamic = 'force-dynamic';
+
 // Initialize database on first request
 let dbInitialized = false;
 

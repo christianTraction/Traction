@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import FeatureItem from "@/components/FeatureItem";
 import FeatureCard from "@/components/FeatureCard";
 import TestimonialCard from "@/components/TestimonialCard";
@@ -50,13 +49,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-3">
-              <Image
+              <img
                 src="/images/logo.svg"
                 alt="Traction Logo"
                 width={40}
                 height={40}
                 className="object-contain"
-                priority
               />
               <span className="text-xl font-semibold">Traction</span>
             </div>
